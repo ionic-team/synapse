@@ -62,6 +62,11 @@ function createSynapseCordovaProxy(window: WindowObject): void {
 }
 
 /**
+ * Expose CapacitorUtils.Synapse.<pluginName>
+ * 
+ * By default it decides to use capacitor if is defined.
+ * If you want to instead use a cordova plugin in a capacitor shell, set overrideCapacitorWithCordova to true.
+ * 
  * Example use: 
  *    window.CapacitorUtils.Synapse.DemoPlugin.ping(
  *      {value: "hello"}, 
@@ -69,9 +74,9 @@ function createSynapseCordovaProxy(window: WindowObject): void {
  *      (err) => {console.error(err)}
  *    );
  */
-export function exposeSynapse(): void {
+export function exposeSynapse(overrideCapacitorWithCordova: boolean = false): void {
   (window as any).CapacitorUtils = (window as any).CapacitorUtils || {};
-  if ((window as any).Capacitor !== undefined) {
+  if ((window as any).Capacitor !== undefined && !overrideCapacitorWithCordova) {
     createSynapseCapacitorProxy(window as any);
   } else if ((window as any).cordova !== undefined) {
     createSynapseCordovaProxy(window as any);
