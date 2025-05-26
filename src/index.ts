@@ -75,6 +75,10 @@ function createSynapseCordovaProxy(window: WindowObject): void {
  *    );
  */
 export function exposeSynapse(overrideCapacitorWithCordova: boolean = false): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
   (window as any).CapacitorUtils = (window as any).CapacitorUtils || {};
   if ((window as any).Capacitor !== undefined && !overrideCapacitorWithCordova) {
     createSynapseCapacitorProxy(window as any);
