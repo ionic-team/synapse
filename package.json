@@ -1,6 +1,6 @@
 {
   "name": "@capacitor/synapse",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "./dist/synapse.cjs",
   "module": "./dist/synapse.mjs",
   "types": "./dist/index.d.ts",
